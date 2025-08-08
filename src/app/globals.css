@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0A0116;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0A0116;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.stroke-text {
+  -webkit-text-stroke: 3px #3F71A8;
+  text-stroke: 3px #3F71A8; 
+  color: transparent;
+}
+
+.tracking-tightest-custom {
+  letter-spacing: -0.1em;
+}
+
+.shimmer-loop {
+  background-image: linear-gradient(
+    110deg,
+    #ffc7bf 0%,
+    #f7e6b1 25%,
+    #e0f9c8 50%,
+    #c8e8f7 75%,
+    #ffc7bf 100%
+  );
+  background-size: 200% 100%;
+  background-repeat: repeat-x;
+  background-position: 0% 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  transition: none;
+}
+
+/* shimmer animation class */
+.shimmer-animate {
+  animation: shimmerMove 3s linear forwards; /* fill forwards to hold last frame */
+  animation-iteration-count: 1; /* play once */
+}
+
+@keyframes shimmerMove {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+/* shimmer frozen state (holds last frame) */
+.shimmer-fixed {
+  animation: none !important;
+  background-position: 200% 50% !important;
+}
